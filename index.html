@@ -2,73 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <script src="./script.js" defer></script>
+    <style>
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+      }
+    </style>
     <title>Rock Paper Scissors</title>
   </head>
 
   <body>
-    <script>
-      // Returns the computer choice for the game.
-      // 0: Computer chooses rock.
-      // 1: Computer chooses paper.
-      // 2: Computer chooses scissors.
-      function getComputerChoice() {
-        return parseInt(Math.floor(Math.random() * 3));
-      }
-      
-      // Prompts the user for a choice in the game and then returns this choice.
-      function getHumanChoice() {
-        return parseInt(prompt("Choose an option: (0 for rock), (1 for paper) and (2 for scissors)."));
-      }
+    <div class="buttons-container">
+      <button id="rock">Rock</button>
+      <button id="paper">Paper</button>
+      <button id="scissors">Scissors</button>
+    </div>
 
-      // Plays a round between the human and the computer.
-      function playRound(humanChoice, computerChoice) {
-        if (humanChoice == 0) {
-          if (computerChoice == 0) {
-            console.log("Tie! Both chose the same.");
-          } else if (computerChoice == 1) {
-            console.log("You lose! Scissors beats Rock");
-            computerScore++;
-          } else {
-            console.log("You win! Rock beats Scissors");
-            humanScore++;
-          }
-        } 
-        if (humanChoice == 1) {
-          if (computerChoice == 0) {
-            console.log("You win! Paper beats Rock");
-            humanScore++;
-          } else if (computerChoice == 1) {
-            console.log("Tie! Both chose the same.");
-          } else {
-            console.log("You lose! Scissors beats Paper");
-            computerScore++;
-          }
-        }
-        if (humanChoice == 2) {
-          if (computerChoice == 0) {
-            console.log("You lose! Rock beats Scissors");
-            computerScore++;
-          } else if (computerChoice == 1) {
-            console.log("You win! Scissors beats Paper");
-            humanScore++;
-          } else {
-            console.log("Tie! Both chose the same.");
-          }
-        }
-      }
-
-      // Plays 5 rounds of a game.
-      function playGame() {
-        for (let i = 1; i <= 5; i++) {
-          const humanSelection = getHumanChoice();
-          const computerSelection = getComputerChoice();
-          playRound(humanSelection, computerSelection);
-        }
-      }
-
-      let humanScore = 0;
-      let computerScore = 0;
-      playGame();
-    </script>
+    <ul class="results-container">
+      <li>Current Result: <span id="round-result"></span></li>
+      <li>Your score: <span id="human-score"></span></li>
+      <li>Computer score: <span id="computer-score"></span></li>
+      <li>Winner: <span id="winner"></span></li>
+    </ul>
   </body>
 </html>
